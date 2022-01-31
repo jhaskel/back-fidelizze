@@ -20,7 +20,7 @@ types.setTypeParser(1114, function(stringValue) {
 const databaseConfig = {
     'host': 'gepron.com.br',
     'port': 5432,
-    'database': 'gepronco_saude',
+    'database': 'gepronco_fidelizze',
     'user': 'gepronco_joao',
     'password': 'Haskel00*',
           
