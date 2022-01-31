@@ -55,7 +55,7 @@ CREATE TABLE users(
 	email VARCHAR(255) NOT NULL UNIQUE,
 	name VARCHAR(255) NOT NULL,
 	lastname VARCHAR(255) NOT NULL,
-	phone VARCHAR(80) NOT NULL UNIQUE,	
+	phone VARCHAR(80) NOT NULL ,	
 	password VARCHAR(255) NOT NULL,
 	is_available BOOLEAN NULL,
 	session_token VARCHAR(255) NULL,
