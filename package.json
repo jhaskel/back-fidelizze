@@ -1,0 +1,33 @@
+{
+  "name": "agendamento",
+  "version": "1.0.0",
+  "description": "agendamento_consultas",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/storage": "^5.16.1",
+    "bluebird": "^3.7.2",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "debug": "^4.3.3",
+    "express": "^4.17.2",
+    "firebase-admin": "^10.0.1",
+    "http": "0.0.1-security",
+    "https": "^1.0.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "mysql": "^2.18.1",
+    "node_extra_ca_certs_mozilla_bundle": "^1.0.4",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "pg-promise": "^10.11.1",
+    "socket.io": "^2.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
