@@ -23,6 +23,7 @@ rutas
 const users = require('./routes/usersRoutes');
 const stores = require('./routes/storesRoutes');
 const services = require('./routes/servicesRoutes');
+const cards = require('./routes/cardsRoutes');
 
 const { credential } = require('firebase-admin');
 
@@ -46,6 +47,7 @@ app.disable('x-powered-by');
 users(app,upload);
 stores(app);
 services(app);
+cards(app);
 
 
 
