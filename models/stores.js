@@ -43,34 +43,44 @@ Stores.create = (stores) => {
     `;
     return db.oneOrNone(sql, [
         stores.name,
+        stores.address,
         stores.description,
+        true,
+        false,
+        stores.adesivos,
+        stores.logo,
         new Date(),
         new Date()
     ]);
 };
-Stores.update = (sintomas) => {
-    console.log(sintomas);
+Stores.update = (stores) => {
+    console.log(stores);
     const sql = `
     UPDATE
         stores
     SET       
-        name = $2,
-        updated_at = $3,
-        name = $4,
-        address =  $5,
-        description = $6,
-        isativo = $7,
-        isopen= $8,
-        adesivos= $9,
-        logo= $10,
-        created_at= $11,
-        updated_at= $12
+        name = $2,        
+        address =  $3,
+        description = $4,
+        isativo = $5,
+        isopen= $6,
+        adesivos= $7,
+        logo= $8,
+        created_at= $9,
+        updated_at= $10
     WHERE
         id = $1
     `;
     return db.none(sql, [
-        sintomas.id,
-        sintomas.name,        
+        stores.id,
+        stores.name,
+        stores.address,
+        stores.description,
+        stores.isativo,
+        stores.isopen,,
+        stores.adesivos,
+        stores.logo,
+        stores.created_at,
         new Date()
     ]);
 };
