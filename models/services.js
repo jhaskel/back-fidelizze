@@ -19,7 +19,8 @@ Services.getAll = () => {
     `;
 
     return db.manyOrNone(sql);
-}
+};
+
 Services.findByStores = (id_store) => {
     const sql = `
     SELECT *   FROM  services  WHERE id_store = $1

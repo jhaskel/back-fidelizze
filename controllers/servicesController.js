@@ -29,14 +29,15 @@ module.exports = {
 
     async findByStore(req, res, next) {
         try {
-            const id_store = req.params.id_store; // CLIENTE
-            const data = await Services.findByStore(id_store);
+            const id_store = req.params.id_store;
+            console.log(`paraetro: ${id_store}`);
+            const data = await Services.findByStores(id_store);
             return res.status(201).json(data);
         } 
         catch (error) {
             console.log(`Error: ${error}`);
             return res.status(501).json({
-                message: `Error al listar los productos por categoria`,
+                message: `Erro ao listar los serviços por loja`,
                 success: false,
                 error: error
             });

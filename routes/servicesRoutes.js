@@ -7,7 +7,7 @@ module.exports = (app) => {
     * GET ROUTES
     */
    app.get('/api/services/getAll', passport.authenticate('jwt', {session: false}), servicesController.getAll);
-   app.get('/api/users/findByStore/:id',passport.authenticate('jwt',{session:false}),servicesController.findByStore);
+   app.get('/api/services/findByStore/:id_store',passport.authenticate('jwt',{session:false}),servicesController.findByStore);
 
     /*
     * POST ROUTES
