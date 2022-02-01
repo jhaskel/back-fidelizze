@@ -1,18 +1,25 @@
-const Stores = require('../models/stores');
+const services = require('../models/services');
+const msg1 = 'Houve um erro ao obter os serviços!';
+const msg2 = 'Serviço adicionado com Sucesso!';
+const msg3 = 'Houve um erro em cadastrar o serviço!';
+const msg4 = 'O serviço foi atualizado com sucesso!';
+const msg5 = 'Houve um erro em atualizar o serviço!';
+const msg6 = 'Serviço deletado com sucesso!';
+const msg7 = 'Houve um erro ao deletar o serviço!';
 
 module.exports = {
 
     async getAll(req, res, next) {
 
         try {
-            const data = await Stores.getAll();
-            console.log(`Stores ${JSON.stringify(data)}`);
+            const data = await services.getAll();
+            console.log(`services ${JSON.stringify(data)}`);
             return res.status(201).json(data);
         } 
         catch (error) {
             console.log(`Error ${error}`);    
             return res.status(501).json({
-                message: 'Houve um erro ao obter as loja',
+                message: msg1,
                 error: error,
                 success: false
             })
@@ -22,13 +29,13 @@ module.exports = {
 
     async create(req, res, next) {
         try {
-            const stores = req.body;
-            console.log(`Loja enviada: ${Stores}`);
+            const services = req.body;
+            console.log(`Loja enviada: ${services}`);
 
-            const data = await Stores.create(stores);
+            const data = await services.create(services);
 
             return res.status(201).json({
-                message: 'Lojas adicionada com Sucesso',
+                message: msg2,
                 success: true,
                 data: data.id
             });
@@ -37,7 +44,7 @@ module.exports = {
         catch (error) {
             console.log(`Error: ${error}`);    
             return res.status(501).json({
-                message: 'Houve um erro em cadastrar a loja',
+                message: msg3,
                 success: false,
                 error: error
             });
@@ -49,11 +56,11 @@ module.exports = {
         try {
             
             let sintoma = req.body;
-            await Stores.update(sintoma);            
+            await services.update(sintoma);            
 
             return res.status(201).json({
                 success: true,
-                message: 'La orden se actualizo correctamente',
+                message: msg4,
             });
 
         } 
@@ -61,7 +68,7 @@ module.exports = {
             console.log(`Error ${error}`);    
             return res.status(501).json({
                 success: false,
-                message: 'Hubo un error al actualizar la orden',
+                message: msg5,
                 error: error
             });
         }
@@ -72,11 +79,11 @@ module.exports = {
         try {
             
             let sintoma = req.body;
-            await Stores.delete(sintoma);            
+            await services.delete(sintoma);            
 
             return res.status(201).json({
                 success: true,
-                message: 'La orden se actualizo correctamente',
+                message: msg6,
             });
 
         } 
@@ -84,7 +91,7 @@ module.exports = {
             console.log(`Error ${error}`);    
             return res.status(501).json({
                 success: false,
-                message: 'Hubo un error al actualizar la orden',
+                message: msg7,
                 error: error
             });
         }

@@ -21,8 +21,8 @@ const upload = multer({
 rutas
 */
 const users = require('./routes/usersRoutes');
-
 const stores = require('./routes/storesRoutes');
+const services = require('./routes/servicesRoutes');
 
 const { credential } = require('firebase-admin');
 
@@ -45,6 +45,7 @@ app.disable('x-powered-by');
 //CHAMANDO AS ROTAS
 users(app,upload);
 stores(app);
+services(app);
 
 
 
