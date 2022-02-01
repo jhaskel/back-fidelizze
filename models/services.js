@@ -33,7 +33,7 @@ Services.create = (services) => {
     const sql = `
     INSERT INTO
         services( 
-            id_store           
+            id_store,           
             name,            
             code,            
             created_at,
