@@ -20,7 +20,7 @@ Services.getAll = () => {
 
     return db.manyOrNone(sql);
 }
-Product.findByStores = (id_store) => {
+Services.findByStores = (id_store) => {
     const sql = `
     SELECT *   FROM  services  WHERE id_store = $1
     `;

@@ -1,4 +1,4 @@
-const services = require('../models/services');
+const Services = require('../models/services');
 const msg1 = 'Houve um erro ao obter os serviços!';
 const msg2 = 'Serviço adicionado com Sucesso!';
 const msg3 = 'Houve um erro em cadastrar o serviço!';
@@ -12,7 +12,7 @@ module.exports = {
     async getAll(req, res, next) {
 
         try {
-            const data = await services.getAll();
+            const data = await Services.getAll();
             console.log(`services ${JSON.stringify(data)}`);
             return res.status(201).json(data);
         } 
@@ -27,12 +27,28 @@ module.exports = {
 
     },
 
+    async findByStore(req, res, next) {
+        try {
+            const id_store = req.params.id_store; // CLIENTE
+            const data = await Services.findByStore(id_store);
+            return res.status(201).json(data);
+        } 
+        catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                message: `Error al listar los productos por categoria`,
+                success: false,
+                error: error
+            });
+        }
+    },
+
     async create(req, res, next) {
         try {
             const services = req.body;
             console.log(`Loja enviada: ${services}`);
 
-            const data = await services.create(services);
+            const data = await Services.create(services);
 
             return res.status(201).json({
                 message: msg2,
@@ -56,7 +72,7 @@ module.exports = {
         try {
             
             let sintoma = req.body;
-            await services.update(sintoma);            
+            await Services.update(sintoma);            
 
             return res.status(201).json({
                 success: true,
@@ -79,7 +95,7 @@ module.exports = {
         try {
             
             let sintoma = req.body;
-            await services.delete(sintoma);            
+            await Services.delete(sintoma);            
 
             return res.status(201).json({
                 success: true,
