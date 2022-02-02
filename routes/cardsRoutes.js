@@ -9,6 +9,7 @@ module.exports = (app) => {
    app.get('/api/cards/getAll', passport.authenticate('jwt', {session: false}), cardsController.getAll);
    app.get('/api/cards/findByStore/:id_store',passport.authenticate('jwt',{session:false}),cardsController.findByStore);
    app.get('/api/cards/findByUser/:id_user',passport.authenticate('jwt',{session:false}),cardsController.findByUser);
+   app.get('/api/cards/findByCard/:id_user',passport.authenticate('jwt',{session:false}),cardsController.findByCard);
 
     /*
     * POST ROUTES

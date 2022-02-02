@@ -19,13 +19,34 @@ Cards.findByStores = (id_store) => {
     return db.manyOrNone(sql, id_store);
 };
 
-Cards.findByUser = (id_store) => {
+Cards.findByUser = (id_user) => {
     const sql = `
     SELECT *  FROM  cards  WHERE id_user = $1
     `;
 
-    return db.manyOrNone(sql, id_store);
+    return db.manyOrNone(sql, id_user);
 };
+
+Cards.findByCard = (id_user) => {
+    const sql = `
+    SELECT id_store, count(id),
+ (select array_to_json(array_agg(row_to_json(t)))
+    from (
+      select CD.id,CD.nomeloja,CD.created_at from cards CD	 
+		
+   where CD.id_store = C.id_store
+    ) t)
+	
+	
+
+FROM cards C 
+where C.id_user = $1 and C.isativo = true
+GROUP BY C.id_store ORDER BY C.id_store
+    `;
+
+    return db.manyOrNone(sql, id_user);
+};
+
 
 Cards.create = (cards) => {
     const sql = `
