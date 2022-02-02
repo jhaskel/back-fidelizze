@@ -27,7 +27,7 @@ Cards.findByUser = (id_user) => {
     return db.manyOrNone(sql, id_user);
 };
 
-Cards.findByCard = (id_user) => {
+Cards.findByCards = (id_user) => {
     const sql = `
     SELECT id_store, count(id),
  (select array_to_json(array_agg(row_to_json(t)))

@@ -60,11 +60,11 @@ module.exports = {
             });
         }
     },
-    async findByCard(req, res, next) {
+    async findByCards(req, res, next) {
         try {
             const id_user = req.params.id_user;
             console.log(`paraetro: ${id_user}`);
-            const data = await Cards.findByCard(id_user);
+            const data = await Cards.findByCards(id_user);
             return res.status(201).json(data);
         } 
         catch (error) {
