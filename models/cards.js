@@ -29,7 +29,7 @@ Cards.findByUser = (id_user) => {
 
 Cards.findByCards = (id_user) => {
     const sql = `
-    SELECT C.id_store, count(C.id) quant,nomeloja,S.logo,S.isopen,
+    SELECT C.id_store, count(C.id) quant,nomeloja,S.logo,S.isopen,S.adesivos,
     (select array_to_json(array_agg(row_to_json(t)))
        from (
          select CD.id,CD.nomeloja,CD.created_at from cards CD	 
@@ -42,7 +42,7 @@ Cards.findByCards = (id_user) => {
    FROM cards C 
    inner join stores S on S.id = C.id_store
    where C.id_user = $1 and C.isativo = true
-   GROUP BY C.id_store,C.nomeloja, S.logo,S.isopen ORDER  BY C.id_store
+   GROUP BY C.id_store,C.nomeloja, S.logo,S.isopen,S.adesivos ORDER  BY C.id_store
    
     `;
 
