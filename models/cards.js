@@ -29,7 +29,7 @@ Cards.findByUser = (id_user) => {
 
 Cards.findByCards = (id_user) => {
     const sql = `
-    SELECT id_store, count(id),nomeloja,
+    SELECT id_store, count(id) quant,nomeloja,
  (select array_to_json(array_agg(row_to_json(t)))
     from (
       select CD.id,CD.nomeloja,CD.created_at from cards CD	 
