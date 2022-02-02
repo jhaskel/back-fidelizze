@@ -48,7 +48,7 @@ Cards.create = (cards) => {
         cards.code,
         cards.nomecliente, 
         cards.nomeloja, 
-        cards.isativo,          
+        true,          
         new Date(),
         new Date()
     ]);
