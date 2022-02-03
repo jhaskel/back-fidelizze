@@ -90,7 +90,8 @@ Cards.update = (cards) => {
         nomeloja =  $6,  
         isativo = $7      
         created_at= $8,
-        updated_at= $9
+        updated_at= $9,
+        id_resgate=$10
     WHERE
         id = $1
     `;
@@ -102,8 +103,9 @@ Cards.update = (cards) => {
         cards.nomecliente, 
         cards.nomeloja, 
         cards.isativo,      
-        cards.created_at,
-        new Date()
+        cards.created_at,        
+        new Date(),
+        cards.id_resgate
     ]);
 };
 

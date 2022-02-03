@@ -81,7 +81,7 @@ CREATE TABLE stores (
 	id BIGSERIAL PRIMARY KEY,
 	name VARCHAR(180) NOT NULL ,
 	address VARCHAR(255) NOT NULL,
-	description VARCHAR(255) NOT NULL,
+	description VARCHAR(255) NOT NULL,	
 	isativo BOOLEAN NOT NULL,
 	isopen BOOLEAN NOT NULL,
 	adesivos BIGINT NOT NULL,
@@ -107,6 +107,7 @@ CREATE TABLE cards(
 	id BIGSERIAL PRIMARY KEY,
 	id_user BIGINT NOT NULL,
 	id_store BIGINT NOT NULL,
+	id_resgate BIGINT,
 	code VARCHAR(255) NOT NULL,	
 	nomeloja VARCHAR(255) NOT NULL,	
 	nomecliente VARCHAR(255) NOT NULL,
@@ -118,12 +119,13 @@ CREATE TABLE cards(
 );
 
 
-DROP TABLE IF EXISTS resgate CASCADE;
-CREATE TABLE resgate(
+DROP TABLE IF EXISTS resgates CASCADE;
+CREATE TABLE resgates(
 	id BIGSERIAL PRIMARY KEY,
 	id_user BIGINT NOT NULL,
-	id_store BIGINT NULL,	
+	id_store BIGINT NULL,		
 	ano BIGINT NOT NULL,
+	code VARCHAR(255) NOT NULL,	
 	nomeloja VARCHAR(255) NOT NULL,	
 	nomecliente VARCHAR(255) NOT NULL,	
 	created_at TIMESTAMP(0) NOT NULL,

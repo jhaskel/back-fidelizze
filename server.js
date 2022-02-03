@@ -24,6 +24,7 @@ const users = require('./routes/usersRoutes');
 const stores = require('./routes/storesRoutes');
 const services = require('./routes/servicesRoutes');
 const cards = require('./routes/cardsRoutes');
+const resgates = require('./routes/resgatesRoutes');
 
 const { credential } = require('firebase-admin');
 
@@ -48,6 +49,7 @@ users(app,upload);
 stores(app);
 services(app);
 cards(app);
+resgates(app);
 
 
 
