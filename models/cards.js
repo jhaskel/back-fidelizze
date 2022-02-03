@@ -35,6 +35,7 @@ Cards.findByCards = (id_user) => {
          select CD.id,CD.nomeloja,CD.created_at from cards CD	 
            
       where CD.id_store = C.id_store and CD.isativo = true
+      order by CD.created_at 
        ) t)
        
        
@@ -88,10 +89,9 @@ Cards.update = (cards) => {
         code =  $4,  
         nomecliente =  $5,  
         nomeloja =  $6,  
-        isativo = $7      
-        created_at= $8,
-        updated_at= $9,
-        id_resgate=$10
+        isativo = $7,        
+        updated_at= $8,
+        id_resgate=$9
     WHERE
         id = $1
     `;
@@ -102,8 +102,7 @@ Cards.update = (cards) => {
         cards.code, 
         cards.nomecliente, 
         cards.nomeloja, 
-        cards.isativo,      
-        cards.created_at,        
+        cards.isativo,
         new Date(),
         cards.id_resgate
     ]);
