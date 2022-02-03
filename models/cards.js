@@ -83,25 +83,15 @@ Cards.update = (cards) => {
     const sql = `
     UPDATE
         cards
-    SET       
-        id_user = $2,
-        id_store = $3,                
-        code =  $4,  
-        nomecliente =  $5,  
-        nomeloja =  $6,  
-        isativo = $7,        
-        updated_at= $8,
-        id_resgate=$9
+    SET                
+        isativo = $2,        
+        updated_at= $3,
+        id_resgate=$4
     WHERE
         id = $1
     `;
     return db.none(sql, [
-        cards.id,
-        cards.id_user,
-        cards.id_store,       
-        cards.code, 
-        cards.nomecliente, 
-        cards.nomeloja, 
+        cards.id,       
         cards.isativo,
         new Date(),
         cards.id_resgate
