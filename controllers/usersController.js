@@ -38,6 +38,23 @@ module.exports = {
             });
         }
     },
+
+    async findByEmail(req, res, next) {
+        try {
+            const email = req.params.email;
+
+            const data = await User.findByEmail(email);    
+            console.log(`Usuario: ${data}`);
+            return res.status(201).json(data);
+        } 
+        catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                success: false,
+                message: 'Erro ao buscar o usuario por Email'
+            });
+        }
+    },
   
     async register(req, res, next) {
         try {            
