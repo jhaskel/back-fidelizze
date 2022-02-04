@@ -21,7 +21,19 @@ Resgates.findByStores = (id_store) => {
 
 Resgates.findByUser = (id_user) => {
     const sql = `
-    SELECT *  FROM  resgates  WHERE id_user = $1
+    SELECT R.*,
+    (select array_to_json(array_agg(row_to_json(t)))
+       from (
+         select CD.id,CD.nomeloja,CD.created_at from cards CD	 
+           
+      where CD.id_resgate = R.id
+      order by CD.created_at desc
+       ) t)     
+   
+   FROM resgates R
+   
+   where R.id_user = $1 
+   GROUP BY R.id ORDER  BY R.created_at desc
     `;
 
     return db.manyOrNone(sql, id_user);
