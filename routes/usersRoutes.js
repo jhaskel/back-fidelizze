@@ -5,7 +5,7 @@ module.exports = (app,upload) => {
     // TRAER DATOS
     app.get('/api/users/getAll', UsersController.getAll);
     app.get('/api/users/findById/:id',passport.authenticate('jwt',{session:false}),UsersController.findById);
-    app.get('/api/users/findByEmail/:email',passport.authenticate('jwt',{session:false}),UsersController.findByEmail);
+    app.get('/api/users/findByEmail/:email',UsersController.findByEmail);
     //app.get('/api/users/findById/:id',UsersController.findById);
     app.get('/api/teste', function (req, res) {
         res.send('Hello World!');
