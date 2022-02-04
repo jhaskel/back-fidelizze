@@ -6,6 +6,7 @@ const storage = require('../utils/cloud_storage');
 
 
 module.exports = {
+    
     async getAll(req, res, next) {
         try {
             const data = await User.getAll();    
@@ -20,7 +21,25 @@ module.exports = {
             });
         }
     },
-    //fim getall
+    async findByRole(req, res, next) {
+        try {
+            const role = req.params.role;
+            console.log(`Rolex: ${role}`);
+
+            const data = await User.findByRole(role);    
+            console.log(`Usuario: ${data}`);
+            return res.status(201).json(data);
+        } 
+        catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                success: false,
+                message: 'Erro ao buscar o usuario por Role'
+            });
+        }
+    },
+
+    
 
     async findById(req, res, next) {
         try {

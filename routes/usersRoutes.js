@@ -4,6 +4,7 @@ const passport = require("passport")
 module.exports = (app,upload) => {
     // TRAER DATOS
     app.get('/api/users/getAll', UsersController.getAll);
+    app.get('/api/users/findByRole/:role', UsersController.findByRole);
     app.get('/api/users/findById/:id',passport.authenticate('jwt',{session:false}),UsersController.findById);
     app.get('/api/users/findByEmail/:email',UsersController.findByEmail);
     //app.get('/api/users/findById/:id',UsersController.findById);

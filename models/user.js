@@ -14,6 +14,7 @@ User.getAll = () => {
     return db.manyOrNone(sql);
 }
 
+
 User.findById = (id, callback) => {
 
     const sql = `
@@ -105,7 +106,7 @@ User.findDeliveryMen = () => {
         R.id = 3  
     `;
     return db.manyOrNone(sql);
-}
+};
 
 User.findByEmail = (email) => {
     const sql = `
@@ -151,26 +152,11 @@ User.findByEmail = (email) => {
     
     `
     return db.oneOrNone(sql, email);
-}
-/*User.findByEmail = (email) => {
+};
+User.findByRole = (role) => {
     const sql = `
     SELECT
-        U.id,
-        U.email,
-        U.name,
-        U.lastname,
-        U.image,
-        U.phone,
-        U.password,
-        U.session_token,
-        json_agg(
-            json_build_object(
-                'id', R.id,
-                'name', R.name,
-                'image', R.image,
-                'route', R.route
-            )
-        ) AS roles
+        U.*   
     FROM 
         users AS U
     INNER JOIN
@@ -182,14 +168,15 @@ User.findByEmail = (email) => {
     ON
         R.id = UHR.id_rol
     WHERE
-        U.email = $1
+        R.name = $1
     GROUP BY
         U.id
-    
+		order by U.name
     `
-    return db.oneOrNone(sql, email);
+    return db.manyOrNone(sql, role);
 }
-*/
+
+
 
 User.getAdminsNotificationTokens = () => {
     const sql = `
