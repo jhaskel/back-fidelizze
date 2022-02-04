@@ -24,7 +24,8 @@ Resgates.findByUser = (id_user) => {
     SELECT R.*,
     (select array_to_json(array_agg(row_to_json(t)))
        from (
-         select CD.* from cards CD	 
+         select CD.*,S.name nameService from cards CD
+		   inner join services S on S.code = CD.code
            
       where CD.id_resgate = R.id
       order by CD.created_at desc
@@ -32,7 +33,7 @@ Resgates.findByUser = (id_user) => {
    
    FROM resgates R
    
-   where R.id_user = $1
+   where R.id_user = $1 
    GROUP BY R.id ORDER  BY R.created_at desc
     `;
 
