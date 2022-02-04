@@ -23,7 +23,10 @@ Services.getAll = () => {
 
 Services.findByStores = (id_store) => {
     const sql = `
-    SELECT *   FROM  services  WHERE id_store = $1
+    SELECT S.*,L.isopen   
+FROM  services S
+inner join stores L on L.id = S.id_store
+WHERE S.id_store = $1
     `;
 
     return db.manyOrNone(sql, id_store);
