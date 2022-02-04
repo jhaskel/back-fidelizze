@@ -41,18 +41,27 @@ User.findByUserId = (id) => {
         U.id,
         U.email,
         U.name,
-        U.lastname,        
+        U.lastname,       
         U.phone,
         U.password,
         U.session_token,
-        json_agg(
-            json_build_object(
-                'id', R.id,
-                'name', R.name,
-                'image', R.image,
-                'route', R.route
-            )
-        ) AS roles
+        (select array_to_json(array_agg(row_to_json(t)))
+    from (
+      select roles.id, roles.name,roles.image,roles.route from roles
+	
+    INNER JOIN
+        user_has_roles AS UHR
+    ON
+        UHR.id_user = U.id
+    INNER JOIN
+        roles AS R
+    ON
+        R.id = UHR.id_rol
+		
+    WHERE
+        roles.id = UHR.id_rol
+		
+    ) t)
     FROM 
         users AS U
     INNER JOIN
@@ -66,7 +75,7 @@ User.findByUserId = (id) => {
     WHERE
         U.id = $1
     GROUP BY
-        U.id    
+        U.id
     `
     return db.oneOrNone(sql, id);
 }
