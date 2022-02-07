@@ -77,6 +77,23 @@ module.exports = {
         }
     },
 
+    async findByQuantByUser(req, res, next) {
+        try {
+            const id_store = req.params.id_store;
+            console.log(`paraetro: ${id_store}`);
+            const data = await Cards.findByQuantUser(id_store);
+            return res.status(201).json(data);
+        } 
+        catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                message: `Erro ao listar  quantidade de cards por usuário`,
+                success: false,
+                error: error
+            });
+        }
+    },
+
     async create(req, res, next) {
         try {
             const cards = req.body;

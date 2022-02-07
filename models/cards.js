@@ -51,6 +51,21 @@ Cards.findByCards = (id_user) => {
     return db.manyOrNone(sql, id_user);
 };
 
+Cards.findByQuantUser = (id_Store) => {
+    const sql = `
+    SELECT count(C.id_store),C.nomecliente,U.email           
+   
+    FROM cards C 
+    inner join users U on U.id = C.id_user
+    where C.id_store = $1 and C.isativo = true
+     group by C.id_store,C.nomecliente,U.email ORDER  BY C.id_store
+   
+   
+    `;
+
+    return db.manyOrNone(sql, id_store);
+};
+
 
 Cards.create = (cards) => {
     const sql = `
