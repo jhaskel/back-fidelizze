@@ -19,6 +19,21 @@ module.exports = {
         }
 
     },
+    async findById(req, res, next) {
+        try {
+            const id = req.params.id;
+            const data = await Stores.findById(id);    
+            console.log(`Usuario: ${data}`);
+            return res.status(201).json(data);
+        } 
+        catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                success: false,
+                message: 'Erro ao buscar a loja por ID'
+            });
+        }
+    },
 
     async create(req, res, next) {
         try {

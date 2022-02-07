@@ -23,6 +23,14 @@ Stores.getAll = () => {
     `;
 
     return db.manyOrNone(sql);
+},
+Stores.findById = (id) => {
+    console.log("idx "+ id );
+    const sql = `
+    SELECT * FROM stores WHERE id = $1
+    
+    `
+    return db.oneOrNone(sql, id);
 }
 
 Stores.create = (stores) => {
