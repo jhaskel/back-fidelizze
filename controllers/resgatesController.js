@@ -43,6 +43,22 @@ module.exports = {
             });
         }
     },
+    async findQuantByStore(req, res, next) {
+        try {
+            const id_store = req.params.id_store;
+            console.log(`paraetro: ${id_store}`);
+            const data = await Resgates.findQuantByStores(id_store);
+            return res.status(201).json(data);
+        } 
+        catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                message: `Erro ao listar a quantidade de resgates por loja`,
+                success: false,
+                error: error
+            });
+        }
+    },
 
     async findByUser(req, res, next) {
         try {
