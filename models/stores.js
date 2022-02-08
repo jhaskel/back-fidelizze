@@ -31,7 +31,7 @@ Stores.findById = (id) => {
     
     `
     return db.oneOrNone(sql, id);
-}
+},
 
 Stores.create = (stores) => {
     const sql = `
@@ -60,7 +60,7 @@ Stores.create = (stores) => {
         new Date(),
         new Date()
     ]);
-};
+},
 Stores.update = (stores) => {
     console.log(stores);
     const sql = `
@@ -90,6 +90,17 @@ Stores.update = (stores) => {
         stores.logo,
         stores.created_at,
         new Date()
+    ]);
+};
+Stores.updateOpen = (stores) => {
+    console.log(stores);
+    const sql = `
+    UPDATE stores SET isopen = $2 WHERE id = $1
+    `;
+    return db.none(sql, [
+        stores.id,
+        stores.isopen,
+        
     ]);
 };
 

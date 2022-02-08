@@ -60,15 +60,38 @@ module.exports = {
     },
 
     async update(req, res, next) {
+        console.log('hhjhjhjhj');
         console.log(req.body);
         try {
             
-            let sintoma = req.body;
-            await Stores.update(sintoma);            
+            let loja = req.body;
+            await Stores.update(loja);            
 
             return res.status(201).json({
                 success: true,
-                message: 'La orden se actualizo correctamente',
+                message: 'A loja foi atualizada',
+            });
+
+        } 
+        catch (error) {
+            console.log(`Error ${error}`);    
+            return res.status(501).json({
+                success: false,
+                message: 'Hubo un error al actualizar la orden',
+                error: error
+            });
+        }
+    },
+    async updateOpen(req, res, next) {
+        console.log(req.body);
+        try {
+            
+            let loja = req.body;
+            await Stores.updateOpen(loja);            
+
+            return res.status(201).json({
+                success: true,
+                message: 'A loja foi atualizada',
             });
 
         } 
