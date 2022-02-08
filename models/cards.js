@@ -66,6 +66,13 @@ Cards.findByQuantUser = (id_store) => {
     return db.manyOrNone(sql, id_store);
 };
 
+Cards.findQuantByService = (code) => {
+    const sql = `
+    select count(id) quant from cards where code = $1 group by code
+    `;
+    return db.oneOrNone(sql, code);
+};
+
 
 Cards.create = (cards) => {
     const sql = `

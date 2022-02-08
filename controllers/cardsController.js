@@ -94,6 +94,23 @@ module.exports = {
         }
     },
 
+    async findQuantByService(req, res, next) {
+        try {
+            const code = req.params.code;
+            console.log(`paraetro: ${code}`);
+            const data = await Cards.findQuantByService(code);
+            return res.status(201).json(data);
+        } 
+        catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                message: `Erro ao listar  quantidade de cards por serviço`,
+                success: false,
+                error: error
+            });
+        }
+    },
+
     async create(req, res, next) {
         try {
             const cards = req.body;

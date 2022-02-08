@@ -44,7 +44,6 @@ Resgates.findQuantByStores = (id_store) => {
     const sql = `
     select count(id) quant from resgates where id_store = $1 group by id_store
     `;
-
     return db.oneOrNone(sql, id_store);
 };
 
