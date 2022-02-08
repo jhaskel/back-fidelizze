@@ -13,6 +13,6 @@ module.exports = (app) => {
     * POST ROUTES
     */
    app.post('/api/services/create', passport.authenticate('jwt', {session: false}), servicesController.create);
-   app.put('/api/services/update', passport.authenticate('jwt', {session: false}), servicesController.update);
+   app.put('/api/services/update', passport.authenticate('jwt', {session: false}),servicesController.update);
    app.delete('/api/services/delete', passport.authenticate('jwt', {session: false}), servicesController.delete);
 }

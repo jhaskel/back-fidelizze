@@ -60,24 +60,35 @@ module.exports = {
     },
 
     async update(req, res, next) {
-        console.log('hhjhjhjhj');
-        console.log(req.body);
         try {
-            
-            let loja = req.body;
-            await Stores.update(loja);            
+           
+            const store = JSON.parse(req.body.store);
+            console.log(`Datos enviados del usuario: ${JSON.stringify(store)}`);
+
+            const files = req.files;
+
+            if (files.length > 0) {
+                const pathImage = `image_${Date.now()}`; // NOMBRE DEL ARCHIVO
+                const url = await storage(files[0], pathImage);
+
+                if (url != undefined && url != null) {
+                    store.logo = url;
+                }
+            }
+
+            await Stores.update(store);
 
             return res.status(201).json({
                 success: true,
-                message: 'A loja foi atualizada',
+                message: 'Los datos del usuario se actualizaron correctamente'
             });
 
         } 
         catch (error) {
-            console.log(`Error ${error}`);    
+            console.log(`Error: ${error}`);
             return res.status(501).json({
                 success: false,
-                message: 'Hubo un error al actualizar la orden',
+                message: 'Hubo un error con la actualizacion de datos del usuario',
                 error: error
             });
         }
