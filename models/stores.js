@@ -39,6 +39,7 @@ Stores.create = (stores) => {
         stores(            
             name,
             address,
+            phone,
             description,
             isativo,
             isopen,
@@ -47,11 +48,12 @@ Stores.create = (stores) => {
             created_at,
             updated_at
         )
-    VALUES ($1, $2, $3, $4,$5,$6,$7,$8,$9) RETURNING id
+    VALUES ($1, $2, $3, $4,$5,$6,$7,$8,$9,$10) RETURNING id
     `;
     return db.oneOrNone(sql, [
         stores.name,
         stores.address,
+        stores.phone,
         stores.description,
         true,
         false,
@@ -69,13 +71,13 @@ Stores.update = (stores) => {
     SET       
         name = $2,        
         address =  $3,
-        description = $4,
-        isativo = $5,
-        isopen= $6,
-        adesivos= $7,
-        logo= $8,
-        created_at= $9,
-        updated_at= $10
+        phone =  $4,
+        description = $5,
+        isativo = $6,
+        isopen= $7,
+        adesivos= $8,
+        logo= $9,
+        created_at= $10      
     WHERE
         id = $1
     `;
@@ -83,12 +85,12 @@ Stores.update = (stores) => {
         stores.id,
         stores.name,
         stores.address,
+        stores.phone,
         stores.description,
         stores.isativo,
-        stores.isopen,,
+        stores.isopen,
         stores.adesivos,
-        stores.logo,
-        stores.created_at,
+        stores.logo,       
         new Date()
     ]);
 };
