@@ -46,7 +46,7 @@ app.disable('x-powered-by');
 
 //CHAMANDO AS ROTAS
 users(app,upload);
-stores(app,upload);
+stores(app);
 services(app);
 cards(app);
 resgates(app);

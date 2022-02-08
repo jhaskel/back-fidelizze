@@ -60,35 +60,23 @@ module.exports = {
     },
 
     async update(req, res, next) {
+        console.log(req.body);
         try {
-           
-            const store = JSON.parse(req.body.store);
-            console.log(`Datos enviados del usuario: ${JSON.stringify(store)}`);
-
-            const files = req.files;
-
-            if (files.length > 0) {
-                const pathImage = `image_${Date.now()}`; // NOMBRE DEL ARCHIVO
-                const url = await storage(files[0], pathImage);
-
-                if (url != undefined && url != null) {
-                    store.logo = url;
-                }
-            }
-
-            await Stores.update(store);
+            
+            let stores = req.body;
+            await Stores.update(stores);            
 
             return res.status(201).json({
                 success: true,
-                message: 'Los datos del usuario se actualizaron correctamente'
+                message: 'Lojas atualizada com Sucesso',
             });
 
         } 
         catch (error) {
-            console.log(`Error: ${error}`);
+            console.log(`Error ${error}`);    
             return res.status(501).json({
                 success: false,
-                message: 'Hubo un error con la actualizacion de datos del usuario',
+                message: 'Erro ao atualizar a loja',
                 error: error
             });
         }
@@ -120,8 +108,8 @@ module.exports = {
         console.log(req.body);
         try {
             
-            let sintoma = req.body;
-            await Stores.delete(sintoma);            
+            let stores = req.body;
+            await Stores.delete(stores);            
 
             return res.status(201).json({
                 success: true,
