@@ -53,7 +53,7 @@ Cards.findByCards = (id_user) => {
 
 Cards.findByQuantUser = (id_store) => {
     const sql = `
-    SELECT count(C.id_store) quant,U.name,U.email,C.id_user          
+    SELECT count(C.id_store) quant,U.name nomecliente,U.email,C.id_user          
    
     FROM cards C 
     inner join users U on U.id = C.id_user
