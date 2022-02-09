@@ -80,7 +80,7 @@ module.exports = {
         try {
             const id_user = req.params.id_user;
             console.log(`paraetro: ${id_user}`);
-            const data = await Resgates.findByUser(id_user);
+            const data = await Resgates.findQuantByUser(id_user);
             return res.status(201).json(data);
         } 
         catch (error) {
