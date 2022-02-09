@@ -21,7 +21,7 @@ Cards.findByStores = (id_store) => {
 
 Cards.findByUser = (id_user) => {
     const sql = `
-    SELECT *  FROM  cards  WHERE id_user = $1
+    SELECT *  FROM  cards  WHERE id_user = $1 and isativo= true
     `;
 
     return db.manyOrNone(sql, id_user);
