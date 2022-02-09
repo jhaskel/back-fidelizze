@@ -76,6 +76,22 @@ module.exports = {
             });
         }
     },
+    async findQuantByUser(req, res, next) {
+        try {
+            const id_user = req.params.id_user;
+            console.log(`paraetro: ${id_user}`);
+            const data = await Resgates.findByUser(id_user);
+            return res.status(201).json(data);
+        } 
+        catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                message: `Erro ao listar los resgates por quantidade`,
+                success: false,
+                error: error
+            });
+        }
+    },
     async findByCards(req, res, next) {
         try {
             const id_user = req.params.id_user;

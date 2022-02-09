@@ -40,6 +40,14 @@ Resgates.findByUser = (id_user) => {
     return db.manyOrNone(sql, id_user);
 };
 
+Resgates.findQuantByUser = (id_user) => {
+    const sql = `
+    select * from resgates where id_user = $1 
+    `;
+
+    return db.manyOrNone(sql, id_user);
+};
+
 Resgates.findQuantByStores = (id_store) => {
     const sql = `
     select count(id) quant from resgates where id_store = $1 group by id_store

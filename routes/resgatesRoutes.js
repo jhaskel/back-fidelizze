@@ -10,6 +10,9 @@ module.exports = (app) => {
    app.get('/api/resgates/findByStore/:id_store',passport.authenticate('jwt',{session:false}),resgatesController.findByStore);
    app.get('/api/resgates/findQuantByStore/:id_store',passport.authenticate('jwt',{session:false}),resgatesController.findQuantByStore);
    app.get('/api/resgates/findByUser/:id_user',passport.authenticate('jwt',{session:false}),resgatesController.findByUser);
+   app.get('/api/resgates/findQuantByUser/:id_user',passport.authenticate('jwt',{session:false}),resgatesController.findQuantByStore);
+
+
 
 
 
