@@ -34,16 +34,15 @@ Cards.findByCards = (id_user) => {
        from (
          select CD.id,CD.nomeloja,CD.created_at from cards CD	 
            
-      where CD.id_store = C.id_store and CD.isativo = true
+      where CD.id_store = C.id_store and CD.id_user = C.id_user  and CD.isativo = true
       order by CD.created_at 
-       ) t)
-       
+       ) t)      
        
    
    FROM cards C 
    inner join stores S on S.id = C.id_store
    where C.id_user = $1 and C.isativo = true
-   GROUP BY C.id_store,C.nomeloja, S.logo,S.isopen,S.adesivos,C.isativo ORDER  BY C.id_store
+   GROUP BY C.id_store,C.nomeloja, S.logo,S.isopen,S.adesivos,C.isativo, C.id_user ORDER  BY C.id_store
    
    
     `;
@@ -58,7 +57,7 @@ Cards.findByQuantUser = (id_store) => {
     FROM cards C 
     inner join users U on U.id = C.id_user
     where C.id_store = $1 and C.isativo = true
-     group by C.id_store,U.name,U.email,C.id_user ORDER  BY quant desc
+     group by C.id_store,U.name,U.email,C.id_user ORDER  BY quant desc,nomecliente
    
    
     `;
