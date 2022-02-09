@@ -58,7 +58,7 @@ Cards.findByQuantUser = (id_store) => {
     FROM cards C 
     inner join users U on U.id = C.id_user
     where C.id_store = $1 and C.isativo = true
-     group by C.id_store,U.name,U.email,C.id_user ORDER  BY C.id_store
+     group by C.id_store,U.name,U.email,C.id_user ORDER  BY quant desc
    
    
     `;
