@@ -21,8 +21,7 @@ User.findById = (id, callback) => {
     SELECT
         id,
         email,
-        name,
-        lastname,        
+        name,          
         phone,
         password,
         session_token
@@ -41,8 +40,7 @@ User.findByUserId = (id) => {
     SELECT
         U.id,
         U.email,
-        U.name,
-        U.lastname,       
+        U.name,         
         U.phone,
         U.password,
         U.session_token,
@@ -87,7 +85,7 @@ User.findDeliveryMen = () => {
         id,
         email,
         name,
-        lastname,        
+            
         phone,
         U.password,
         U.session_token,
@@ -113,8 +111,7 @@ User.findByEmail = (email) => {
     SELECT
         U.id,
         U.email,
-        U.name,
-        U.lastname,       
+        U.name,           
         U.phone,
         U.password,
         U.session_token,
@@ -219,21 +216,17 @@ User.create = (user) => {
     INSERT INTO
         users(
             email,
-            name,
-            lastname,
-            phone,           
+            name,  
             password,
             created_at,
             updated_at
         )
-    VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING id
+    VALUES($1, $2, $3, $4, $5) RETURNING id
     `;
 
     return db.oneOrNone(sql, [
         user.email,
-        user.name,
-        user.lastname,
-        user.phone,        
+        user.name,          
         user.password,
         new Date(),
         new Date()
@@ -245,18 +238,16 @@ User.update = (user) => {
     UPDATE
         users
     SET
-        name = $2,
-        lastname = $3,
-        phone = $4,       
-        updated_at = $5
+        name = $2,       
+        phone = $3,       
+        updated_at = $4
     WHERE
         id = $1
     `;
 
     return db.none(sql, [
         user.id,
-        user.name,
-        user.lastname,
+        user.name,        
         user.phone,        
         new Date()
     ]);
