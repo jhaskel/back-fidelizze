@@ -3,6 +3,9 @@ const jwt = require('jsonwebtoken');
 const keys = require('../config/keys');
 const Rol = require('../models/rol')
 const storage = require('../utils/cloud_storage');
+const nodemail = require('nodemailer');
+const user = "2bitsw@gmail.com";
+const pass = "mnmlH00*";
 
 
 module.exports = {
@@ -146,7 +149,7 @@ module.exports = {
     },
     async update(req, res, next) {
         try {
-            
+            const id_category = req.params.id_category; // CLIENTE
             const user = JSON.parse(req.body.user);
             console.log(`Datos enviados del usuario: ${JSON.stringify(user)}`);
 
@@ -178,6 +181,10 @@ module.exports = {
             });
         }
     },
+
+ 
+
+
     
     async login(req, res, next) {
         try {
@@ -255,6 +262,93 @@ module.exports = {
                 error: error
             });
         }
+    },
+
+    async send(req, res, next) {  
+        const email = req.params.email;  
+            const transporter = nodemail.createTransport(
+                {
+                    host:"smtp.gmail.com",
+                    port:587,
+                    auth:{user,pass}
+                }
+            )
+            transporter.sendMail({
+                from:user,
+                to:email,
+                replyTo:email,
+                subject:"Recuperação de senha",
+                html: "<!doctype html>\n" +
+				"<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\"\n" +
+				"xmlns:th=\"http://www.thymeleaf.org\">\n" +
+				"<head>\n" +
+				"<meta charset=\"UTF-8\">\n" +
+				"<meta name=\"viewport\"\n" +
+				"content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\n" +
+				"<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n" +
+				"<title>Email</title>\n" +
+				"</head>\n" +
+				"<body>\n" +
+                "<div> Olá <h3>" + email + "</h3></div>\n" +
+				"<div><b>Esse é um Email de Recuperação de Senha para o sistema Fidelizze<\b></div>\n" +			
+				"<div> Se não foi você que solicitou ignore esse email</div>\n" +			
+				"<div> Para alterar sua senha clique no link abaixo:</div>\n" +
+                "<div> <a href='https://app-fidelizze.surge.sh/#recovery'>Fidelizze</a></div>\n" +
+				"</body>\n" +
+				"</html>\n"
+
+                
+            }).then(info=>{
+
+                res.send(info)
+            }).catch(error =>{
+                res.send(error)
+            })
+           
+    },
+    async recovery(req, res, next) {  
+        console.log(` req ${req.body.name}`);
+        try {
+            let user = req.body;
+            
+           await User.recover(user);
+           
+            return res.status(201).json({
+                success: true,
+                message: 'Senha atualizada com Sucesso'
+            });
+        } 
+        catch(e) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                success: false,
+                message: 'Erro ao atuazlizar a senha',
+                error: error
+            });
+        }
+           
+    },
+    async esqueci(req, res, next) {  
+        console.log(` req ${req.body.name}`);
+        try {
+            let user = req.body;
+            
+           await User.esqueci(user);
+           
+            return res.status(201).json({
+                success: true,
+                message: 'Requizição enviada com sucesso'
+            });
+        } 
+        catch(e) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                success: false,
+                message: 'Erro ao enviar a solicitação de alteração de senha',
+                error: error
+            });
+        }
+           
     }
 
 }

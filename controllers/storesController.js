@@ -82,7 +82,7 @@ module.exports = {
         }
     },
     async updateOpen(req, res, next) {
-        console.log(req.body);
+        console.log(` req ${req.body}`);
         try {
             
             let loja = req.body;

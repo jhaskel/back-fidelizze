@@ -251,7 +251,40 @@ User.update = (user) => {
         user.phone,        
         new Date()
     ]);
-}
+},
+User.recover = (user) => {
+
+  const myPasswordHashed = crypto.createHash('md5').update(user.password).digest('hex');
+   user.password = myPasswordHashed;
+    console.log("jjjkjkjkjkkj");
+
+    const sql = `
+    UPDATE users set password = $2 where email = $1
+    `;
+
+    return db.none(sql, [
+        user.email,
+        user.password       
+          
+      
+    ]);
+},
+User.esqueci = (user) => {
+
+   
+  
+      const sql = `
+      UPDATE users set recovery = $2 where id = $1
+      `;
+  
+      return db.none(sql, [
+          user.id,
+          user.recovery       
+            
+        
+      ]);
+  },
+  
 
 
 

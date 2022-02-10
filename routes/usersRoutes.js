@@ -15,10 +15,13 @@ module.exports = (app,upload) => {
     
     app.post('/api/users/createWeb', UsersController.register);
     app.post('/api/users/login', UsersController.login);
-    app.post('/api/users/logout', UsersController.logout);
+    app.post('/api/users/logout', UsersController.logout);    
 
     app.put('/api/users/update',passport.authenticate('jwt',{session:false}), upload.array('image',1),UsersController.update);
-   // app.put('/api/users/update', upload.array('image',1),UsersController.update);
+    
+    app.get('/api/users/send/:email', UsersController.send);
+    app.put('/api/users/recovery', UsersController.recovery);
+    app.put('/api/users/esqueci', UsersController.esqueci);
    
    
 }
