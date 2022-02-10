@@ -11,6 +11,7 @@ const admin = require("firebase-admin");
 const serviceAccount = require('./serviceAccountKey.json');
 const passport = require('passport')
 
+console.log(` teree ${process.env.NODE_ENV}`)
 //iniciar firebase
 admin.initializeApp({credential:admin.credential.cert(serviceAccount)})
 const upload = multer({

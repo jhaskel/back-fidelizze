@@ -5,7 +5,17 @@ const Rol = require('../models/rol')
 const storage = require('../utils/cloud_storage');
 const nodemail = require('nodemailer');
 const user = "2bitsw@gmail.com";
-const pass = "mnmlH00*";
+const pass = "H151005M";
+
+function geraStringAleatoria(tamanho) {
+    var stringAleatoria = '';
+    var caracteres = '0123456789';
+    for (var i = 0; i < tamanho; i++) {
+        stringAleatoria += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+    return stringAleatoria;
+}
+console.log(geraStringAleatoria(6));
 
 
 module.exports = {
@@ -265,7 +275,7 @@ module.exports = {
     },
 
     async send(req, res, next) {  
-        const email = req.params.email;  
+        const email = req.body.email;  
             const transporter = nodemail.createTransport(
                 {
                     host:"smtp.gmail.com",

@@ -19,7 +19,7 @@ module.exports = (app,upload) => {
 
     app.put('/api/users/update',passport.authenticate('jwt',{session:false}), upload.array('image',1),UsersController.update);
     
-    app.get('/api/users/send/:email', UsersController.send);
+    app.post('/api/users/send', UsersController.send);
     app.put('/api/users/recovery', UsersController.recovery);
     app.put('/api/users/esqueci', UsersController.esqueci);
    
