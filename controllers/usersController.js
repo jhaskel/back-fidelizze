@@ -62,8 +62,16 @@ module.exports = {
         try {
             const email = req.params.email;
 
-            const data = await User.findByEmail(email);    
-            console.log(`Usuario: ${data}`);
+            const data = await User.findByEmail(email);  
+            console.log(`STATUS: ${res}`);  
+            
+           if(data==null){
+            return res.status(501).json({
+                success: false,
+                message: 'Não encontramos seu email!'
+            });
+
+           }else
             return res.status(201).json(data);
         } 
         catch (error) {
@@ -81,7 +89,7 @@ module.exports = {
             const data = await User.create(user);
 
             await Rol.create(data.id, 1); // ROL POR DEFECTO (CLIENTE)
-
+           
             return res.status(201).json({
                 success: true,
                 message: 'Registro realizado com Sucesso!',
