@@ -19,12 +19,7 @@ User.findById = (id, callback) => {
 
     const sql = `
     SELECT
-        id,
-        email,
-        name,          
-        phone,
-        password,
-        session_token
+        *
     FROM
         users
     WHERE
@@ -38,12 +33,7 @@ User.findByUserId = (id) => {
     console.log("idx "+ id );
     const sql = `
     SELECT
-        U.id,
-        U.email,
-        U.name,         
-        U.phone,
-        U.password,
-        U.session_token,
+        U.*,
         (select array_to_json(array_agg(row_to_json(t)))
     from (
       select roles.id, roles.name,roles.image,roles.route from roles
@@ -109,12 +99,7 @@ User.findDeliveryMen = () => {
 User.findByEmail = (email) => {
     const sql = `
     SELECT
-        U.id,
-        U.email,
-        U.name,           
-        U.phone,
-        U.password,
-        U.session_token,
+       U.*,
         (select array_to_json(array_agg(row_to_json(t)))
     from (
       select roles.id, roles.name,roles.image,roles.route from roles
