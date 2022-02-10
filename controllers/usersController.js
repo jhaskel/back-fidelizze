@@ -303,7 +303,7 @@ module.exports = {
                 "<div> Olá <h3>" + email + "</h3></div>\n" +
 				"<div><b>Esse é um Email de Recuperação de Senha para o sistema Fidelizze<\b></div>\n" +			
 				"<div> Se não foi você que solicitou ignore esse email</div>\n" +			
-				"<div> Para alterar sua senha clique no link abaixo e copie o códiigo: " + code + "</div>\n" +
+				"<div> Para alterar sua senha clique no link abaixo e copie o código: " + code + "</div>\n" +
                 "<div> <a href='https://app-fidelizze.surge.sh/#recovery'>Fidelizze</a></div>\n" +
 				"</body>\n" +
 				"</html>\n"
