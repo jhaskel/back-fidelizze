@@ -74,8 +74,7 @@ User.findDeliveryMen = () => {
     SELECT
         id,
         email,
-        name,
-            
+        name,            
         phone,
         U.password,
         U.session_token,
@@ -244,12 +243,14 @@ User.recover = (user) => {
     console.log(`jjjkjkjkjkkj ${user.password}`);
 
     const sql = `
-    UPDATE users set password = $2 where email = $1
+    UPDATE users set password = $2,recovery=null where email = $1
     `;
 
     return db.none(sql, [
         user.email,
-        user.password       
+        user.password ,
+        user.recovery
+
           
       
     ]);
