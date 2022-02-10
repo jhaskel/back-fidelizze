@@ -256,7 +256,7 @@ User.recover = (user) => {
 
   const myPasswordHashed = crypto.createHash('md5').update(user.password).digest('hex');
    user.password = myPasswordHashed;
-    console.log("jjjkjkjkjkkj");
+    console.log(`jjjkjkjkjkkj ${user.password}`);
 
     const sql = `
     UPDATE users set password = $2 where email = $1
