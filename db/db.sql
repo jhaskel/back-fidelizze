@@ -16,7 +16,7 @@ INSERT INTO roles (
 )
 VALUES(
 	'CLIENTE',
-	'cliente/list',
+	'cliente',
 	'2021-05-22',
 	'2021-05-22'
 );
@@ -30,7 +30,7 @@ INSERT INTO roles (
 )
 VALUES(
 	'ADMIN',
-	'admin/list',
+	'admin/tabs',
 	'2021-05-22',
 	'2021-05-22'
 );
