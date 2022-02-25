@@ -111,10 +111,20 @@ module.exports = {
 
         } 
         catch (error) {
+
             console.log(`Error: ${error}`);
+
+            if(error.code==23505){
+                return res.status(501).json({
+                    success: false,
+                    message: 'Esse email já está em uso',
+                    error: error
+                });
+            }else
+
             return res.status(501).json({
                 success: false,
-                message: 'Houve un erro com eol registro do usuario',
+                message: 'Houve un erro com  registro do usuario',
                 error: error
             });
         }
