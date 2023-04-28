@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "agendamento_consultas",
   "engine": {
-    "node": "16.16.0",
+    "node": "18.16.5",
     "npm":"9.6.5"
   },
   "main": "server.js",
