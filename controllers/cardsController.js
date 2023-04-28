@@ -8,6 +8,7 @@ const msg6 = 'Card deletado com sucesso!';
 const msg7 = 'Houve um erro ao deletar o card!';
 
 module.exports = {
+    
 
     async getAll(req, res, next) {
 
@@ -155,11 +156,21 @@ module.exports = {
     },
 
 
-
+         
     async betha(req, res, next) {
 
+        var test = new Object();
+
         const cards = req.body;
-            console.log(`Loja enviada: ${req}`);
+            console.log(`Loja enviada: ${cards}`);
+
+            test = {
+                id: cards.id,
+                unidade: cards.unidade,
+                iestoque: cards.estoque,
+                categoria: cards.categoria,
+            }
+            console.log('tes '+test.unidade)
             
             return res.status(201).json({
                 id: cards.id,
