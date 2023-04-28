@@ -29,9 +29,9 @@ module.exports = {
     async getTodoss(req, res, next) {
        
        
-
+        console.log("resposta "+res.body)
         try {
-            const data = res.body;
+            const data = req.body;
            
             return res.status(201).json(data);
         } 
