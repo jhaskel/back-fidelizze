@@ -7,7 +7,7 @@ module.exports = (app) => {
     * GET ROUTES
     */
    app.get('/api/cards/getAll', passport.authenticate('jwt', {session: false}), cardsController.getAll);
-   app.get('/api/cards/getTodoss', cardsController.getTodoss);
+   app.get('/api/cards/getBetha', cardsController.getBetha);
    app.get('/api/cards/findByStore/:id_store',passport.authenticate('jwt',{session:false}),cardsController.findByStore);
    app.get('/api/cards/findByUser/:id_user',passport.authenticate('jwt',{session:false}),cardsController.findByUser);
    app.get('/api/cards/findByCards/:id_user',passport.authenticate('jwt',{session:false}),cardsController.findByCards);

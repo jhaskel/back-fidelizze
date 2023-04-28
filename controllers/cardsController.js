@@ -28,7 +28,7 @@ module.exports = {
         //gdf
 
     },
-    async getTodoss(req, res, next) {       
+    async getBetha(req, res, next) {       
        
         console.log("nome da unidade "+test.unidade)
         try {
