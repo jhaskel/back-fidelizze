@@ -26,6 +26,23 @@ module.exports = {
         }
 
     },
+    async getTodoss(req, res, next) {
+
+        try {
+            const data = {"nome":"joao","idade":50}
+           
+            return res.status(201).json(data);
+        } 
+        catch (error) {
+            console.log(`Error ${error}`);    
+            return res.status(501).json({
+                message: msg1,
+                error: error,
+                success: false
+            })
+        }
+
+    },
 
     async findByStore(req, res, next) {
         try {
