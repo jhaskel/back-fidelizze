@@ -1,6 +1,6 @@
 {
   "name": "agendamento",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "agendamento_consultas",
   "main": "server.js",
   "scripts": {
