@@ -27,9 +27,11 @@ module.exports = {
 
     },
     async getTodoss(req, res, next) {
+       
+       
 
         try {
-            const data = {"nome":"joao","idade":50}
+            const data = res.body;
            
             return res.status(201).json(data);
         } 
