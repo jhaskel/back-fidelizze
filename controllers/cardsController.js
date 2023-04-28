@@ -6,7 +6,10 @@ const msg4 = 'O serviço foi atualizado com card!';
 const msg5 = 'Houve um erro em atualizar o card!';
 const msg6 = 'Card deletado com sucesso!';
 const msg7 = 'Houve um erro ao deletar o card!';
-var test = new Object();
+
+
+var contribuintes =  [];
+
 module.exports = {
     
 
@@ -30,11 +33,19 @@ module.exports = {
     },
     async getBetha(req, res, next) {       
        
-        console.log("nome da unidade "+test.unidade)
-        try {
+
+        console.log(contribuintes.length)
+
+        for(var c in contribuintes){
+            console.log(contribuintes[c].unidade);
+            console.log(contribuintes[c].id);
+           }
+           
+           return res.status(201).json(contribuintes);
+      /*  try {
             const data = req.body;
            
-            return res.status(201).json(test);
+            return res.status(201).json(contribuintes);
         } 
         catch (error) {
             console.log(`Error ${error}`);    
@@ -43,7 +54,7 @@ module.exports = {
                 error: error,
                 success: false
             })
-        }
+        }*/
 
     },
 
@@ -164,18 +175,37 @@ module.exports = {
         const cards = req.body;
             console.log(`Loja enviada: ${cards}`);
 
-            test = {
-                id: cards.id,
-                unidade: cards.unidade,
-                iestoque: cards.estoque,
-                categoria: cards.categoria,
+            let contribuinte= new Object();
+
+       
+
+            for (let item in cards) {
+
+                contribuinte = {
+                    id: cards[item].id,
+                    unidade: cards[item].unidade,
+                    estoque: cards[item].estoque,
+                    categoria: cards[item].categoria,
+    
+                    
+                }
+                contribuintes.push(contribuinte)                
+                
             }
-            console.log('tes '+test.unidade)
+            
+           
+
+           for(var c in contribuintes){
+            console.log(contribuintes[c].unidade);
+           }
+           
+            
+          
             
             return res.status(201).json({
                 id: cards.id,
                 unidade: cards.unidade,
-                iestoque: cards.estoque,
+                estoque: cards.estoque,
                 categoria: cards.categoria,
                 
                 
