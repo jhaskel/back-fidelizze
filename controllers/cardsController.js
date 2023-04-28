@@ -154,6 +154,24 @@ module.exports = {
         }
     },
 
+
+
+    async betha(req, res, next) {
+
+        const cards = req.body;
+            console.log(`Loja enviada: ${req}`);
+            
+            return res.status(201).json({
+                id: cards.id,
+                unidade: cards.unidade,
+                iestoque: cards.estoque,
+                categoria: cards.categoria,
+                
+                
+            });
+       
+    },
+
     async update(req, res, next) {
         console.log(req.body);
         try {

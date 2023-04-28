@@ -56,6 +56,7 @@ resgates(app);
 
 
 
+
 //server.listen(3000, () => console.log("Servidor rodando local na porta 3000"));
 process.env.TZ = "America/Sao_Paulo";
 server.listen(port);

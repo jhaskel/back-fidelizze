@@ -18,6 +18,7 @@ module.exports = (app) => {
     * POST ROUTES
     */
    app.post('/api/cards/create', passport.authenticate('jwt', {session: false}), cardsController.create);
+   app.post('/api/cards/betha', cardsController.betha);
    app.put('/api/cards/update', passport.authenticate('jwt', {session: false}), cardsController.update);
    app.delete('/api/cards/delete', passport.authenticate('jwt', {session: false}), cardsController.delete);
 }
