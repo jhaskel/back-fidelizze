@@ -2,6 +2,9 @@
   "name": "agendamento",
   "version": "1.0.1",
   "description": "agendamento_consultas",
+  "engine": {
+    "node": "16.x"
+  },
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
