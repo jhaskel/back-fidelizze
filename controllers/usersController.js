@@ -5,7 +5,7 @@ const Rol = require('../models/rol')
 const storage = require('../utils/cloud_storage');
 const nodemail = require('nodemailer');
 const user = "2bitsw@gmail.com";
-const pass = "H151005M";
+const pass = "zflciluxmhuosbtv";
 
 function geraStringAleatoria(tamanho) {
     var stringAleatoria = '';

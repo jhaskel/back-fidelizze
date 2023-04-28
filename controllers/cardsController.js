@@ -6,7 +6,7 @@ const msg4 = 'O serviço foi atualizado com card!';
 const msg5 = 'Houve um erro em atualizar o card!';
 const msg6 = 'Card deletado com sucesso!';
 const msg7 = 'Houve um erro ao deletar o card!';
-
+var test = new Object();
 module.exports = {
     
 
@@ -27,14 +27,13 @@ module.exports = {
         }
 
     },
-    async getTodoss(req, res, next) {
+    async getTodoss(req, res, next) {       
        
-       
-        console.log("resposta "+res.body)
+        console.log("nome da unidade "+test.unidade)
         try {
             const data = req.body;
            
-            return res.status(201).json(data);
+            return res.status(201).json(test);
         } 
         catch (error) {
             console.log(`Error ${error}`);    
@@ -159,7 +158,7 @@ module.exports = {
          
     async betha(req, res, next) {
 
-        var test = new Object();
+       
 
         const cards = req.body;
             console.log(`Loja enviada: ${cards}`);
