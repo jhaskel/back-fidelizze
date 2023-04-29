@@ -171,7 +171,7 @@ module.exports = {
     async betha(req, res, next) {
 
        
-
+contribuintes= [];
         const cards = req.body;
             console.log(`Loja enviada: ${cards}`);
 
