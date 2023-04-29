@@ -8,10 +8,10 @@ const msg6 = 'Card deletado com sucesso!';
 const msg7 = 'Houve um erro ao deletar o card!';
 
 
-var contribuintes =  [];
+var contribuintes = [];
 
 module.exports = {
-    
+
 
     async getAll(req, res, next) {
 
@@ -19,9 +19,9 @@ module.exports = {
             const data = await Cards.getAll();
             console.log(`cards ${JSON.stringify(data)}`);
             return res.status(201).json(data);
-        } 
+        }
         catch (error) {
-            console.log(`Error ${error}`);    
+            console.log(`Error ${error}`);
             return res.status(501).json({
                 message: msg1,
                 error: error,
@@ -31,30 +31,30 @@ module.exports = {
         //gdf
 
     },
-    async getBetha(req, res, next) {       
-       
+    async getBetha(req, res, next) {
+
 
         console.log(contribuintes.length)
 
-        for(var c in contribuintes){
+        for (var c in contribuintes) {
             console.log(contribuintes[c].unidade);
             console.log(contribuintes[c].id);
-           }
-           
-           return res.status(201).json(contribuintes);
-      /*  try {
-            const data = req.body;
-           
-            return res.status(201).json(contribuintes);
-        } 
-        catch (error) {
-            console.log(`Error ${error}`);    
-            return res.status(501).json({
-                message: msg1,
-                error: error,
-                success: false
-            })
-        }*/
+        }
+
+        return res.status(201).json(contribuintes);
+        /*  try {
+              const data = req.body;
+             
+              return res.status(201).json(contribuintes);
+          } 
+          catch (error) {
+              console.log(`Error ${error}`);    
+              return res.status(501).json({
+                  message: msg1,
+                  error: error,
+                  success: false
+              })
+          }*/
 
     },
 
@@ -64,7 +64,7 @@ module.exports = {
             console.log(`paraetro: ${id_store}`);
             const data = await Cards.findByStores(id_store);
             return res.status(201).json(data);
-        } 
+        }
         catch (error) {
             console.log(`Error: ${error}`);
             return res.status(501).json({
@@ -81,7 +81,7 @@ module.exports = {
             console.log(`paraetro: ${id_user}`);
             const data = await Cards.findByUser(id_user);
             return res.status(201).json(data);
-        } 
+        }
         catch (error) {
             console.log(`Error: ${error}`);
             return res.status(501).json({
@@ -97,7 +97,7 @@ module.exports = {
             console.log(`paraetro: ${id_user}`);
             const data = await Cards.findByCards(id_user);
             return res.status(201).json(data);
-        } 
+        }
         catch (error) {
             console.log(`Error: ${error}`);
             return res.status(501).json({
@@ -114,7 +114,7 @@ module.exports = {
             console.log(`paraetro: ${id_store}`);
             const data = await Cards.findByQuantUser(id_store);
             return res.status(201).json(data);
-        } 
+        }
         catch (error) {
             console.log(`Error: ${error}`);
             return res.status(501).json({
@@ -131,7 +131,7 @@ module.exports = {
             console.log(`paraetro: ${code}`);
             const data = await Cards.findQuantByService(code);
             return res.status(201).json(data);
-        } 
+        }
         catch (error) {
             console.log(`Error: ${error}`);
             return res.status(501).json({
@@ -155,9 +155,9 @@ module.exports = {
                 data: data.id
             });
 
-        } 
+        }
         catch (error) {
-            console.log(`Error: ${error}`);    
+            console.log(`Error: ${error}`);
             return res.status(501).json({
                 message: msg3,
                 success: false,
@@ -167,67 +167,69 @@ module.exports = {
     },
 
 
-         
+
     async betha(req, res, next) {
 
-       
-contribuintes= [];
+
+        contribuintes = [];
+        console.log(contribuintes.length)
         const cards = req.body;
-            console.log(`Loja enviada: ${cards}`);
+        console.log(`Loja enviada: ${cards}`);
 
-            let contribuinte= new Object();
+        let contribuinte = new Object();
 
-       
 
-            for (let item in cards) {
 
-                contribuinte = {
-                    id: cards[item].id,
-                    unidade: cards[item].unidade,
-                    estoque: cards[item].estoque,
-                    categoria: cards[item].categoria,
-    
-                    
-                }
-                contribuintes.push(contribuinte)                
-                
+        for (let item in cards) {
+
+            contribuinte = {
+                id: cards[item].id,
+                unidade: cards[item].unidade,
+                estoque: cards[item].estoque,
+                categoria: cards[item].categoria,
+
+
             }
-            
-           
+            contribuintes.push(contribuinte)
 
-           for(var c in contribuintes){
+        }
+        console.log('lllll');
+        console.log(contribuintes.length);
+
+
+        for (var c in contribuintes) {
             console.log(contribuintes[c].unidade);
-           }
-           
-            
-          
-            
-            return res.status(201).json({
-                id: cards.id,
-                unidade: cards.unidade,
-                estoque: cards.estoque,
-                categoria: cards.categoria,
-                
-                
-            });
+        }
+
        
+
+
+        return res.status(201).json({
+            id: cards.id,
+            unidade: cards.unidade,
+            estoque: cards.estoque,
+            categoria: cards.categoria,
+
+
+        });
+
     },
 
     async update(req, res, next) {
         console.log(req.body);
         try {
-            
+
             let sintoma = req.body;
-            await Cards.update(sintoma);            
+            await Cards.update(sintoma);
 
             return res.status(201).json({
                 success: true,
                 message: msg4,
             });
 
-        } 
+        }
         catch (error) {
-            console.log(`Error ${error}`);    
+            console.log(`Error ${error}`);
             return res.status(501).json({
                 success: false,
                 message: msg5,
@@ -239,18 +241,18 @@ contribuintes= [];
     async delete(req, res, next) {
         console.log(req.body);
         try {
-            
+
             let sintoma = req.body;
-            await Cards.delete(sintoma);            
+            await Cards.delete(sintoma);
 
             return res.status(201).json({
                 success: true,
                 message: msg6,
             });
 
-        } 
+        }
         catch (error) {
-            console.log(`Error ${error}`);    
+            console.log(`Error ${error}`);
             return res.status(501).json({
                 success: false,
                 message: msg7,
@@ -260,6 +262,6 @@ contribuintes= [];
     },
 
 
-    
+
 
 }
