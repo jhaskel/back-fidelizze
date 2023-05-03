@@ -37,7 +37,7 @@ module.exports = {
         console.log(contribuintes.length)
 
         for (var c in contribuintes) {
-            console.log(contribuintes[c].unidade);
+            console.log(contribuintes[c].cadImobiliario);
             console.log(contribuintes[c].id);
         }
 
@@ -183,10 +183,24 @@ module.exports = {
         for (let item in cards) {
 
             contribuinte = {
+
                 id: cards[item].id,
-                unidade: cards[item].unidade,
-                estoque: cards[item].estoque,
-                categoria: cards[item].categoria,
+                cadImobiliario: cards[item].cadImobiliario,
+                nomeProprietario: cards[item].nomeProprietario,
+                cpfCnpj: cards[item].cpfCnpj,
+                endereco: cards[item].endereco,
+                ativo: cards[item].ativo,
+                inscricaoImobiliariaFormatada: cards[item].inscricaoImobiliariaFormatada,
+                emglobado: cards[item].emglobado,
+                codigoImovelPrincipal: cards[item].codigoImovelPrincipal,
+                dadosAreaConstruida: cards[item].dadosAreaConstruida,
+                dadosUnidade: cards[item].dadosUnidade,
+                dadosAreaTotal: cards[item].dadosAreaTotal,
+                dadosUtilizacao: cards[item].dadosUtilizacao,
+                dadosEnglobado: cards[item].dadosEnglobado,
+                dadosImune: cards[item].dadosImune
+                
+                
 
 
             }
@@ -201,7 +215,7 @@ module.exports = {
             console.log(contribuintes[c].unidade);
         }
 
-       
+
 
 
         return res.status(201).json({
