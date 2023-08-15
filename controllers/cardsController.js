@@ -200,7 +200,7 @@ module.exports = {
                 dadosEnglobado: cards[item].dadosEnglobado,
                 dadosImune: cards[item].dadosImune,
                 dadosTopografia: cards[item].dadosTopografia,
-                dadosPatromonio: cards[item].dadosPatromonio,
+                dadosPatrimonio: cards[item].dadosPatrimonio,
                 dadosOcupacao: cards[item].dadosOcupacao,
                 dadosPedologia: cards[item].dadosPedologia,
                 dadosTipo: cards[item].dadosTipo,                
