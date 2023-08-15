@@ -198,11 +198,19 @@ module.exports = {
                 dadosAreaTotal: cards[item].dadosAreaTotal,
                 dadosUtilizacao: cards[item].dadosUtilizacao,
                 dadosEnglobado: cards[item].dadosEnglobado,
-                dadosImune: cards[item].dadosImune
-                
-                
-
-
+                dadosImune: cards[item].dadosImune,
+                dadosTopografia: cards[item].dadosTopografia,
+                dadosPatromonio: cards[item].dadosPatromonio,
+                dadosOcupacao: cards[item].dadosOcupacao,
+                dadosPedologia: cards[item].dadosPedologia,
+                dadosTipo: cards[item].dadosTipo,                
+                distrito: cards[item].distrito,
+                setor: cards[item].setor,
+                quadra: cards[item].quadra,
+                lote: cards[item].lote,
+                unidade: cards[item].unidade,
+                secao: cards[item].secao,
+                face: cards[item].face
             }
             contribuintes.push(contribuinte)
 
