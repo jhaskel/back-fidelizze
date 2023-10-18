@@ -192,17 +192,21 @@ module.exports = {
                 ativo: cards[item].ativo,
                 inscricaoImobiliariaFormatada: cards[item].inscricaoImobiliariaFormatada,
                 emglobado: cards[item].emglobado,
-                codigoImovelPrincipal: cards[item].codigoImovelPrincipal,
-                dadosAreaConstruida: cards[item].dadosAreaConstruida,
-                dadosUnidade: cards[item].dadosUnidade,
-                dadosAreaTotal: cards[item].dadosAreaTotal,
-                dadosUtilizacao: cards[item].dadosUtilizacao,
                 dadosEnglobado: cards[item].dadosEnglobado,
+                codigoImovelPrincipal: cards[item].codigoImovelPrincipal,
+                dadosTestada: cards[item].dadosTestada,
+                dadosAreaTerreno: cards[item].dadosAreaTerreno,
+                dadosProfundidade: cards[item].dadosProfundidade,                
+                dadosAreaConstruida: cards[item].dadosAreaConstruida,
+                dadosAreaTotal: cards[item].dadosAreaTotal,
+                dadosUnidade: cards[item].dadosUnidade, 
                 dadosImune: cards[item].dadosImune,
+                dadosUtilizacao: cards[item].dadosUtilizacao,
                 dadosTopografia: cards[item].dadosTopografia,
                 dadosPatrimonio: cards[item].dadosPatrimonio,
                 dadosOcupacao: cards[item].dadosOcupacao,
                 dadosPedologia: cards[item].dadosPedologia,
+                dadosSituacao: cards[item].dadosSituacao,
                 dadosTipo: cards[item].dadosTipo,                
                 distrito: cards[item].distrito,
                 setor: cards[item].setor,
@@ -210,7 +214,8 @@ module.exports = {
                 lote: cards[item].lote,
                 unidade: cards[item].unidade,
                 secao: cards[item].secao,
-                face: cards[item].face
+                face: cards[item].face,
+               
             }
             contribuintes.push(contribuinte)
 
