@@ -188,6 +188,7 @@ module.exports = {
                 cadImobiliario: cards[item].cadImobiliario,
                 nomeProprietario: cards[item].nomeProprietario,
                 cpfCnpj: cards[item].cpfCnpj,
+                logradouro: cards[item].logradouro,
                 endereco: cards[item].endereco,
                 ativo: cards[item].ativo,
                 inscricaoImobiliariaFormatada: cards[item].inscricaoImobiliariaFormatada,
